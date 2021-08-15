@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Create New Dojo</title>
+</head>
+<body>
+    <div class="container d-flex flex-row justify-content-evenly bg-secondary mt-3 rounded p-3" style="width: 60%; margin: auto;">
+        <div class="d-flex flex-column" style="width: 40%;">
+            <h1 style="color: whitesmoke;">New Dojo</h1>
+            <form action="/add_dojo" method="post">
+                <div class="mb-3">
+                    <label for="dojo_name" class="form-label" style="color: whitesmoke;">Name:</label>
+                    <input type="text" class="form-control" id="dojo_name" name="dojo_name" placeholder="Enter City/Location">
+                </div>
+                <button class="btn btn-danger" type="submit">Create</button>
+            </form>
+        </div>
+        <div class="d-flex flex-column" style="width: 40%;">
+            <h2 style="color: whitesmoke;">All Dojos</h2>
+            <div class="d-flex flex-column border border-light rounded p-2 bg-danger" style="width: 80%;">
+                {% for one_dojo in all_dojos %}
+                <a href="/dojo/{{one_dojo.id}}" class="link-light">{{ one_dojo.name }}</a>
+                {% endfor %}
+            </div>
+            <div class="d-flex flex-row justify-content-evenly my-2" style="width: 70%;">
+                <a href="/new_ninja" class="link-light">Add Ninja</a> | <a href="/" class="link-light">Home</a>
+            </div>    
+        </div>
+    </div>
+</body>
+</html>
